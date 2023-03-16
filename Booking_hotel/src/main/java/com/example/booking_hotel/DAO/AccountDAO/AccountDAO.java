@@ -43,4 +43,55 @@ public class AccountDAO {
         }
         return list;
     }
+
+    public boolean addUser(String userName, String password, String fullName, int roleID, int statusAcc) {
+        String query = "INSERT INTO [Account] VALUES (?, ?, ?,?,?)";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            ps.setString(3, fullName);
+            ps.setInt(4, roleID);
+            ps.setInt(5, statusAcc);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+    public void deleteUserByID(int id) {
+        String query = "delete from [Account]\n"
+                + "where accID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateUser(int id,String password,String fullname) {
+        String query = "update [Account] set password = ?," +
+                " fullname = ? " +
+                "where accID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, password);
+            ps.setString(2, fullname);
+            ps.setInt(3,id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        AccountDAO test = new AccountDAO();
+        test.updateUser(7, "1234","khanhtoan");
+    }
 }

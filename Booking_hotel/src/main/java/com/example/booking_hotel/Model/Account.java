@@ -28,6 +28,14 @@ public class Account {
         this.statusAcc = statusAcc;
     }
 
+    public Account(String username, String password, String fullname, int roleID, int statusAcc) {
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.roleID = roleID;
+        this.statusAcc = statusAcc;
+    }
+
     public int getID() {
         return ID;
     }

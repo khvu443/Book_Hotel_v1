@@ -32,6 +32,15 @@ public class Order {
         this.rooms = rooms;
     }
 
+    public Order(int orderId, String address, String check_in, String check_out, int guests, int rooms) {
+        this.orderId = orderId;
+        this.address = address;
+        this.check_in = check_in;
+        this.check_out = check_out;
+        this.guests = guests;
+        this.rooms = rooms;
+    }
+
     public int getOrderId() {
         return orderId;
     }

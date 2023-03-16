@@ -76,7 +76,7 @@ public class Account {
         this.statusAcc = statusAcc;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return "Account{" +
                 "ID=" + ID +

@@ -23,13 +23,6 @@
         </dependency>
         
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>6.1.0.jre8</version>
@@ -46,7 +39,12 @@
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
             <version>2.0.0</version>
         </dependency>
-        
+        <dependency>
+            <groupId>org.formcept</groupId>
+            <artifactId>sqljdbc42</artifactId>
+            <version>4.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -98,5 +96,12 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>clojars</id>
+            <name>Clojars</name>
+            <url>https://repo.clojars.org/</url>
+        </repository>
+    </repositories>
 
 </project>

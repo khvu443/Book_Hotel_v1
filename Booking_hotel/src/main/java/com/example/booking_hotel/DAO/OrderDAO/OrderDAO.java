@@ -10,6 +10,7 @@ import com.example.booking_hotel.context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,18 +44,20 @@ public class OrderDAO {
         return list;
     }
 
-    public boolean addOrder(String nameOrder, String address, String image, int number_room, int amount,String type) {
-        String query = "INSERT INTO [Order] VALUES (?, ?, ?,?,?,?)";
+    public boolean addOrder(int oderId,int accountID,int hotelID, String address, String check_in,String check_out, int guests, int room) {
+        String query = "INSERT INTO [Order] VALUES (?, ?, ?,?,?,?,?,?)";
 
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, nameOrder);
-            ps.setString(2, address);
-            ps.setString(3, image);
-            ps.setInt(4, number_room);
-            ps.setInt(5, amount);
-            ps.setString(6,type);
+            ps.setInt(1, oderId);
+            ps.setInt(2, accountID);
+            ps.setInt(3, hotelID);
+            ps.setString(4, address);
+            ps.setString(5, check_in);
+            ps.setString(6, check_out);
+            ps.setInt(7, guests);
+            ps.setInt(8,room);
             ps.executeUpdate();
         } catch (Exception e) {
             return false;
@@ -74,8 +77,8 @@ public class OrderDAO {
     }
 
     public void updateOrder(int orderId,int accountID, int hotelID, String address, String check_in, String check_out,int guests, int rooms) {
-        String query = "update [Order] set accoutnID = ?," +
-                " hotelID = ?, address = ?, check_in = ?,check_out = ?, guests = ?, room = ?  " +
+        String query = "update [Order] set accountID = ?," +
+                " hotelID = ?, address = ?, check_in = ?,check_out = ?, guests = ?, rooms = ?  " +
                 "where orderID = ?";
         try {
             conn = new DBContext().getConnection();
@@ -87,6 +90,7 @@ public class OrderDAO {
             ps.setString(5, check_out);
             ps.setInt(6,guests);
             ps.setInt(7,rooms);
+            ps.setInt(8,orderId);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -94,6 +98,7 @@ public class OrderDAO {
 
     public static void main(String[] args) {
         OrderDAO test = new OrderDAO();
-        System.out.println(test.getOrderList());
+        test.addOrder(3,7,1,"Da Nang city","12:00 AM","19:00 PM",10,4);
+//        System.out.println(test.getOrderList().get(1));
     }
 }

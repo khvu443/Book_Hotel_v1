@@ -28,6 +28,7 @@ public class Account {
         this.statusAcc = statusAcc;
     }
 
+
     public Account(String username, String password, String fullname, int roleID, int statusAcc) {
         this.username = username;
         this.password = password;

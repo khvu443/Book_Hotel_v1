@@ -47,3 +47,14 @@ mvn -version
   2 |	    Staff
   
 - Nhớ sửa lại thông tin bên trong file ConnectSQL thành của 
+
+## Roles trong DB
+-Staff:
+  - Có thể thêm, sửa thông tin khách sạn
+  - Có thể thêm account staff
+  - Xem hết toàn bộ account của cả staff và user nhưng ko thể xem password
+  - Có thể thể xem hết các order
+  - ko thể đặt phòng, ko thể thay đổi thông tin account của người khác
+-User:
+  - Có thể đặt phòng
+  - chỉ có thể xem đc order của chính mình

@@ -56,6 +56,7 @@ mvn -version
   - Xem hết toàn bộ account của cả staff và user nhưng ko thể xem password
   - Có thể thể xem hết các order
   - ko thể đặt phòng, ko thể thay đổi thông tin account của người khác
+
 -User:
   - Có thể đặt phòng
   - chỉ có thể xem đc order của chính mình

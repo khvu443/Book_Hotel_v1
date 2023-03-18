@@ -10,7 +10,8 @@ maven 3.8.5 or latest
 [JDK 18](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html)
 [Mavne 3.8.5](https://maven.apache.org/download.cgi)
 [Huong dan cai maven](https://www.youtube.com/watch?v=qPkrvIGUvtU)
--Sau khi cài xong maven, chạy lệnh trên CMD
+
+-Sau khi cài xong maven, chạy lệnh trên CMD để check phiên bản 
 ```
 mvn -version
 ```

@@ -19,15 +19,14 @@ public class HotelService {
     }
 
     //Show hotel that have address and the number of rooms that you want
+    public ArrayList<Hotel> paginationHotel(String address, int rooms, int page) {
+        ArrayList<Hotel> list = dao.paginationHotels(address, page, rooms).isEmpty() ? null : dao.paginationHotels(address, page, rooms);
+        return list;
+    }
+
+    //Show hotel that have address and the number of rooms that you want
     public ArrayList<Hotel> displayHotelsByAddress(String address, int rooms) {
-        ArrayList<Hotel> list = new ArrayList<>();
-        if (!dao.viewAllHotelByAddress(address).isEmpty()) {
-            for (int i = 0; i < dao.viewAllHotelByAddress(address).size(); i++) {
-                if (dao.viewAllHotelByAddress(address).get(i).getNumber_room() >= rooms) {
-                    list.add(dao.viewAllHotelByAddress(address).get(i));
-                }
-            }
-        }
+        ArrayList<Hotel> list = dao.viewAllHotelByAddress(address, rooms).isEmpty() ? null : dao.viewAllHotelByAddress(address, rooms);
         return list;
     }
 
@@ -40,5 +39,10 @@ public class HotelService {
 
     public boolean addHotel(Hotel h) {
         return dao.addHotel(h);
+    }
+    
+    public Hotel getHotelById(int id)
+    {
+        return dao.getHotel(id);
     }
 }

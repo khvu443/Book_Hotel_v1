@@ -1,9 +1,4 @@
-<%-- 
-    Document   : detail
-    Created on : Mar 16, 2023, 3:15:14 PM
-    Author     : lenovo
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -14,7 +9,7 @@
         <meta name="keywords" content="Hiroto, unica, creative, html">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Hiroto | Template</title>
+        <title>Hiroto</title>
 
         <!-- Css Styles -->
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -25,6 +20,9 @@
         <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
+
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
 
     <body>
@@ -34,127 +32,84 @@
         </div>
 
         <!-- Offcanvas Menu Begin -->
-        <jsp:include page="homepageHeader.jsp"></jsp:include>
-        <!-- Offcanvas Menu End -->
+        <jsp:include page="header_mobile_view.jsp"></jsp:include>
+            <!-- Offcanvas Menu End -->
 
-        <!-- Header Section Begin -->
-        <header class="header">
-            <div class="header__top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <ul class="header__top__widget">
-                                <li><span class="icon_pin_alt"></span> 96 Ernser Vista Suite 437, NY, US</li>
-                                <li><span class="icon_phone"></span> (123) 456-78-910</li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="header__top__right">
-                                <div class="header__top__auth">
-                                    <ul>
-                                        <li><a href="#">Login</a></li>
-                                        <li><a href="#">Register</a></li>
-                                    </ul>
-                                </div>
-                                <div class="header__top__language">
-                                    <img src="img/lan.png" alt="">
-                                    <span>English</span>
-                                    <i class="fa fa-angle-down"></i>
-                                    <ul>
-                                        <li>English</li>
-                                        <li>Bangla</li>
-                                    </ul>
+            <!-- Header Section Begin -->
+            <header class="header">
+            <jsp:include page="header.jsp"></jsp:include>
+                <div class="header__nav__option">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="header__logo">
+                                    <a href="HomePage"><img src="img/logo.png" alt=""></a>
                                 </div>
                             </div>
+                            <div class="col-lg-10">
+                                <div class="header__nav">
+                                    <nav class="header__menu">
+                                        <ul class="menu__class">
+                                            <li><a href="HomePage" class="nav-link">Home</a></li>
+                                            <li><a href="hotels.jsp" class="nav-link">Rooms</a></li>
+                                            <li><a href="#" class="nav-link">About Us</a></li>
+                                            <li><a href="#" class="nav-link">News</a></li>
+                                            <li><a href="#" class="nav-link">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                    <div class="header__nav__widget">
+                                        <a href="hotels.jsp" class="nav-link">Book Now <span class="arrow_right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="canvas__open">
+                            <span class="fa fa-bars"></span>
                         </div>
                     </div>
                 </div>
+            </header>
+            <!-- Header Section End -->
+
+            <!-- Room Details Slider Begin -->
+            <div class="room-details-slider">
+                <div class="container">
+                    <div class="room__details__pic__slider owl-carousel">
+                        <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-1.jpg"></div>
+                        <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-2.jpg"></div>
+                        <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-3.jpg"></div>
+                        <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-4.jpg"></div>
+                    </div>
+                </div>
             </div>
-            <div class="header__nav__option">
+            <!-- Room Details Slider End -->
+
+            <!-- Rooms Details Section Begin -->
+            <section class="room-details spad">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-2">
-                            <div class="header__logo">
-                                <a href="HomePage"><img src="img/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="header__nav">
-                                <nav class="header__menu">
-                                    <ul class="menu__class">
-                                        <li><a href="./index.html">Home</a></li>
-                                        <li><a href="./rooms.html">Rooms</a></li>
-                                        <li><a href="./about.html">About Us</a></li>
-                                        <li class="active"><a href="#">Pages</a>
-                                            <ul class="dropdown">
-                                                <li><a href="./about.html">About Us</a></li>
-                                                <li><a href="./room-details.html">Room Details</a></li>
-                                                <li><a href="./blog-details.html">Blog Details</a></li>
-                                            </ul>
+                        <div class="col-lg-12">
+                            <div class="room__details__content">
+                                <div class="room__details__rating">
+                                    <div class="room__details__hotel">
+                                        <span>${hotel.type}</span>
+                                    <ul class="list-group list-group-horizontal border border-0">
+                                        <li class="list-group-item"> <span><i class="fa-duotone fa-map-location fa-xl" style="--fa-primary-color: gold;"></i> ${hotel.address}</span>
                                         </li>
-                                        <li><a href="./blog.html">News</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
+                                        <li class="list-group-item"><span><i class="fa-duotone fa-bed fa-xl" style="--fa-primary-color: rgb(255, 231, 51); --fa-secondary-opacity: 0.60;"></i> Empty rooms: ${hotel.getNumber_room()}</span>
+                                        </li>
+                                        <li class="list-group-item"> <span><i class="fa-duotone fa-circle-dollar fa-xl" style="--fa-secondary-color: gold; --fa-secondary-opacity: 0.50;"></i> Cost: $${hotel.getAmount()}/days</span>
+                                        </li>
                                     </ul>
-                                </nav>
-                                <div class="header__nav__widget">
-                                    <a href="hotels.jsp">Book Now <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="canvas__open">
-                        <span class="fa fa-bars"></span>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Header Section End -->
 
-        <!-- Room Details Slider Begin -->
-        <div class="room-details-slider">
-            <div class="container">
-                <div class="room__details__pic__slider owl-carousel">
-                    <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-1.jpg"></div>
-                    <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-2.jpg"></div>
-                    <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-3.jpg"></div>
-                    <div class="room__details__pic__slider__item set-bg" data-setbg="img/rooms/details/rd-4.jpg"></div>
-                </div>
-            </div>
-        </div>
-        <!-- Room Details Slider End -->
-
-        <!-- Rooms Details Section Begin -->
-        <section class="room-details spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="room__details__content">
-                            <div class="room__details__rating">
-                                <div class="room__details__hotel">
-                                    <span>Hotel</span>
-                                    <div class="room__details__hotel__rating">
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star-half_alt"></span>
-                                    </div>
-                                </div>
-                                <div class="room__details__advisor">
-                                    <img src="img/rooms/details/tripadvisor.png" alt="">
-                                    <div class="room__details__advisor__rating">
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star"></span>
-                                        <span class="icon_star-half_alt"></span>
-                                    </div>
-                                    <span class="review">(1000 Reviews)</span>
                                 </div>
                             </div>
                             <div class="room__details__title">
-                                <h2>Premium King Room</h2>
-                                <a href="#" class="primary-btn">Booking Now</a>
+                                <h2>${hotel.name_hotel}</h2>
+                                <c:if test="${user.getRoleID() == 1}">
+                                    <a class="primary-btn text-decoration-none" data-bs-toggle="modal" data-bs-target="#book-hotel">Booking Now</a>
+                                </c:if>
+
                             </div>
                             <div class="room__details__desc">
                                 <h2>Description:</h2>
@@ -365,6 +320,77 @@
         </footer>
         <!-- Footer Section End -->
 
+        <!--modal for booking-->
+
+        <!-- Button trigger modal -->
+        <div class="modal fade" id="book-hotel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Booking Hotel</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form class="row g-3" action="BookHotel" method="POST">
+
+                            <div class="col-md-12">
+                                <label for="hotel" class="form-label">Hotel</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-duotone fa-hotel fa-xl" style="--fa-secondary-color:gold;"></i></span>
+                                    <input type="text" class="form-control" id="hotel" name="hotelName" value="${hotel.name_hotel}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="name" class="form-label">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-duotone fa-user fa-xl" style="--fa-primary-color:gold;"></i></span>
+                                    <input type="text" class="form-control" id="name" name="user" value="${user.fullname}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="check-in" class="form-label">Check in</label>
+                                <input type="date" class="form-control" id="check-in" name="check-in" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="check-out" class="form-label">Check out</label>
+                                <input type="date" class="form-control" id="check" name="check-out" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="rooms" class="form-label">Rooms</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-duotone fa-bed-front fa-xl" style="--fa-primary-color:gold;"></i></span>
+                                    <input type="number" min="1" max="${hotel.getNumber_room()}" class="form-control" name="rooms" id="rooms" required>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="guests" class="form-label">Guests</label>
+
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-duotone fa-user-group fa-xl" style="--fa-secondary-color:gold;"></i></span>
+                                    <input type="number"  min="1" max="10" class="form-control" id="guests" name="guests" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-outline-primary" type="submit">Book</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <c:if test="${bookError != null}">
+            <script>
+                window.addEventListener("load", function () {
+                    alert("${bookError}");
+                })
+            </script>
+        </c:if>
+        <jsp:include page="Modal.jsp"></jsp:include>
         <!-- Js Plugins -->
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -373,6 +399,9 @@
         <script src="js/jquery.slicknav.js"></script>
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/main.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     </body>
 
 </html>

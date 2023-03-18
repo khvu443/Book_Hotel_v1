@@ -15,6 +15,7 @@ public class HotelDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
+    //lay danh sach khach san
     public ArrayList<Hotel> viewAllHotel() {
         ArrayList<Hotel> hotels = new ArrayList<Hotel>();
         String query = "select * from Hotel";
@@ -40,13 +41,43 @@ public class HotelDAO {
         }
     }
 
-    public ArrayList<Hotel> viewAllHotelByAddress(String address) {
-        ArrayList<Hotel> hotels = new ArrayList<Hotel>();
-        String query = "select * from Hotel where address like ?";
+    
+    //Lay thong tin khach san = id
+    public Hotel getHotel(int id) {
+        String query = "select * from Hotel where hotelID = ?";
         try {
             conn = new ConnectSQL().makeConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, address);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Hotel(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getFloat(6),
+                        rs.getString(7)
+                );
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Error in display hotel by address: " + e.getMessage());
+            return null;
+        }
+    }
+
+    //Lấy toàn bộ danh hotel dựa vào địa chỉ và số lượng phòng phải nhỏ hơn số hiện có
+    // like %% -> check xem có chứa kí tự đó ko
+    public ArrayList<Hotel> viewAllHotelByAddress(String address, int rooms) {
+        ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+        String query = "select * from Hotel where  address like ? and number_room > ?";
+        try {
+            conn = new ConnectSQL().makeConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + address + "%");
+            ps.setInt(2, rooms);
             rs = ps.executeQuery();
             while (rs.next()) {
                 hotels.add(new Hotel(
@@ -66,6 +97,38 @@ public class HotelDAO {
         }
     }
 
+    //Dùng để phân trang
+    // offset ... fetch ... ->Chúng cho phép bạn giới hạn số lượng bản ghi được trả về bởi một truy vấn.
+    // "OFFSET" là xác định điểm bát đầu và "FETCH" là cung cấp số lượng hàng trả về
+    public ArrayList<Hotel> paginationHotels(String address, int page, int room) {
+        ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+        String query = "  select * from hotel where address like ? and number_room > ? order by hotelID asc offset ? rows FETCH NEXT 4 ROWS ONLY";
+        try {
+            conn = new ConnectSQL().makeConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + address + "%");
+            ps.setInt(2, room);
+            ps.setInt(3, page);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                hotels.add(new Hotel(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getFloat(6),
+                        rs.getString(7)
+                ));
+            }
+            return hotels;
+        } catch (Exception e) {
+            System.out.println("Error in display hotel page by address: " + e.getMessage());
+            return null;
+        }
+    }
+
+    //Cập nhật hotel
     public boolean updateHotel(Hotel h) {
         String query = "update hotel set name_hotel = ?, address =?, image = ?, amount = ?, type=? , number_room = ? where hotelID = ?";
         try {
@@ -88,6 +151,7 @@ public class HotelDAO {
         }
     }
 
+    //thêm hotel
     public boolean addHotel(Hotel h) {
 
         try {

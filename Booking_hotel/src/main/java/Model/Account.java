@@ -1,4 +1,3 @@
-
 package Model;
 
 public class Account {
@@ -15,6 +14,14 @@ public class Account {
 
     public Account(int ID, String username, String password, String fullname, int roleID, int statusAcc) {
         this.ID = ID;
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.roleID = roleID;
+        this.statusAcc = statusAcc;
+    }
+
+    public Account( String username, String password, String fullname, int roleID, int statusAcc) {
         this.username = username;
         this.password = password;
         this.fullname = fullname;

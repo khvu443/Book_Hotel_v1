@@ -9,7 +9,8 @@ package Model;
  * @author lenovo
  */
 public class Order {
-    private String orderId;
+
+    private int orderId;
     private int accountId;
     private int hotelId;
     private String address;
@@ -17,11 +18,13 @@ public class Order {
     private String check_out;
     private int guests;
     private int rooms;
+    private double price;
 
-    public Order (){
+    public Order() {
 
     }
-    public Order(String orderId, int accountId, int hotelId, String address, String check_in, String check_out, int guests, int rooms) {
+
+    public Order(int orderId, int accountId, int hotelId, String address, String check_in, String check_out, int guests, int rooms, double price) {
         this.orderId = orderId;
         this.accountId = accountId;
         this.hotelId = hotelId;
@@ -30,13 +33,33 @@ public class Order {
         this.check_out = check_out;
         this.guests = guests;
         this.rooms = rooms;
+        this.price = price;
     }
 
-    public String getOrderId() {
+    public Order(int accountId, int hotelId, String address, String check_in, String check_out, int guests, int rooms, double price) {
+        this.accountId = accountId;
+        this.hotelId = hotelId;
+        this.address = address;
+        this.check_in = check_in;
+        this.check_out = check_out;
+        this.guests = guests;
+        this.rooms = rooms;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -98,16 +121,16 @@ public class Order {
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", accountId=" + accountId +
-                ", hotelId=" + hotelId +
-                ", address='" + address + '\'' +
-                ", check_in='" + check_in + '\'' +
-                ", check_out='" + check_out + '\'' +
-                ", guests=" + guests +
-                ", rooms=" + rooms +
-                '}';
+        return "Order{"
+                + "orderId=" + orderId
+                + ", accountId=" + accountId
+                + ", hotelId=" + hotelId
+                + ", address='" + address + '\''
+                + ", check_in='" + check_in + '\''
+                + ", check_out='" + check_out + '\''
+                + ", guests=" + guests
+                + ", rooms=" + rooms
+                + '}';
     }
-    
+
 }

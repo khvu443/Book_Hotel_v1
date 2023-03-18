@@ -1,9 +1,4 @@
-<%-- 
-    Document   : rooms
-    Created on : Mar 16, 2023, 3:24:05 PM
-    Author     : lenovo
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -14,7 +9,7 @@
         <meta name="keywords" content="Hiroto, unica, creative, html">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Hiroto | Template</title>
+        <title>Hiroto</title>
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -29,6 +24,8 @@
         <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">-->
     </head>
 
     <body>
@@ -38,219 +35,176 @@
         </div>
 
         <!-- Offcanvas Menu Begin -->
-        <jsp:include page="homepageHeader.jsp"></jsp:include>
-        <!-- Offcanvas Menu End -->
+        <jsp:include page="header_mobile_view.jsp"></jsp:include>
+            <!-- Offcanvas Menu End -->
 
-        <!-- Header Section Begin -->
-        <header class="header">
-            <div class="header__top">
+            <!-- Header Section Begin -->
+            <header class="header">
+            <jsp:include page="header.jsp"></jsp:include>
+                <div class="header__nav__option">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="header__logo">
+                                    <a href="HomePage"><img src="img/logo.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-10">
+                                <div class="header__nav">
+                                    <nav class="header__menu">
+                                        <ul>
+                                            <li><a href="HomePage" class="nav-link">Home</a></li>
+                                            <li class="active nav-link" ><a href="hotels.jsp">Rooms</a></li>
+                                            <li><a href="#" class="nav-link">About Us</a></li>
+                                            <li><a href="#" class="nav-link">News</a></li>
+                                            <li><a href="#" class="nav-link">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                    <div class="header__nav__widget">
+                                        <a href="hotels.jsp" class="nav-link">Book Now <span class="arrow_right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="canvas__open">
+                            <span class="fa fa-bars"></span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Header Section End -->
+
+
+            <!-- Hero Section Begin -->
+            <section class="hero spad set-bg" data-setbg="img/hero.jpg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-7">
-                            <ul class="header__top__widget">
-                                <li><span class="icon_pin_alt"></span> 96 Ernser Vista Suite 437, NY, US</li>
-                                <li><span class="icon_phone"></span> (123) 456-78-910</li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="header__top__right">
-                                <div class="header__top__auth">
-                                    <ul>
-                                        <li><a href="#">Login</a></li>
-                                        <li><a href="#">Register</a></li>
-                                    </ul>
-                                </div>
-                                <div class="header__top__language">
-                                    <img src="img/lan.png" alt="">
-                                    <span>English</span>
-                                    <i class="fa fa-angle-down"></i>
-                                    <ul>
-                                        <li>English</li>
-                                        <li>Bangla</li>
-                                    </ul>
+                        <div class="col-lg-12 text-center">
+                            <div class="breadcrumb__text mb-3">
+                                <h1>Our Room</h1>
+                                <div class="breadcrumb__links">
+                                    <a href="HomePage">Home</a>
+                                    <span>Rooms</span>
                                 </div>
                             </div>
+                            <form action="HotelRoom" method="GET" class="filter__form">
+                                <div class="filter__form__item filter__form__item--search">
+                                    <p>Location</p>
+                                    <div class="filter__form__input">
+                                        <input name="location" type="text" placeholder="Search Location" required>
+                                        <span class="icon_search"></span>
+                                    </div>
+                                </div>
+
+                                <div class="filter__form__item filter__form__item--search">
+                                    <p>Rooms</p>
+                                    <div class="filter__form__input">
+                                        <span><i class="fa-duotone fa-bed-front"></i></span>
+                                        <input name="rooms" type="number" placeholder="Number of rooms" min="1" value="1" required>
+                                    </div>
+                                </div>
+
+                                <div class="filter__form__item filter__form__item--select">
+                                    <p>People(s)</p>
+                                    <div class="filter__form__select">
+                                        <span class="icon_group"></span>
+                                        <select name="peoples">
+                                            <option value="1">1 People</option>
+                                            <option value="2">2 Peoples</option>
+                                            <option value="3">3 Peoples</option>
+                                            <option value="4">4 Peoples</option>
+                                            <option value="5">5 Peoples</option>
+                                            <option value="6">6 Peoples</option>
+                                            <option value="7">7 Peoples</option>
+                                            <option value="8">8 Peoples</option>
+                                            <option value="9">9 Peoples</option>
+                                            <option value="10">10 Peoples</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit">CHECK AVAILABLE</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="header__nav__option">
+            </section>
+            <!-- Hero Section End -->
+
+            <!-- Rooms Section Begin -->
+            <section class="rooms spad">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-2">
-                            <div class="header__logo">
-                                <a href="HomePage"><img src="img/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="header__nav">
-                                <nav class="header__menu">
-                                    <ul>
-                                        <li><a href="HomePage">Home</a></li>
-                                        <li class="active"><a href="hotels.jsp">Rooms</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">News</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                    </ul>
-                                </nav>
-                                <div class="header__nav__widget">
-                                    <a href="hotels.jsp">Book Now <span class="arrow_right"></span></a>
+                    <c:forEach items="${listHotel}" var="hotel">
+                        <c:if test="${hotel.getHotelID()%2==1}">
+                            <div class="row col-lg-12 justify-content-between">
+                                <div class="col-lg-5 p-0 col-md-5">
+                                    <div class="room__pic__slider owl-carousel">
+                                        <div class="room__pic__item set-bg" data-setbg="${hotel.image}"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 p-0 col-md-5">
+                                    <div class="room__text">
+                                        <h3>${hotel.name_hotel}</h3>
+                                        <h2><sup>$</sup>${hotel.getAmount()}<span>/day</span></h2>
+                                        <ul>
+                                            <li><span>Address:</span>${hotel.address}</li>
+                                            <li><span>Rooms:</span>${hotel.getNumber_room()}</li>
+                                            <li><span>Services:</span>Wifi, Television, Bathroom,...</li>
+                                            <li><span>View:</span>Sea View</li>
+                                        </ul>
+                                        <a href="DetailHotel?hotelId=${hotel.getHotelID()}">View Details</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="canvas__open">
-                        <span class="fa fa-bars"></span>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Header Section End -->
+                        </c:if>
+
+                        <c:if  test="${hotel.getHotelID()%2==0}">
+                            <div class="row col-lg-12 justify-content-between">
+                                <div class="col-lg-5 p-0 col-md-5">
+                                    <div class="room__text">
+                                        <h3>${hotel.name_hotel}</h3>
+                                        <h2><sup>$</sup>${hotel.getAmount()}<span>/day</span></h2>
+                                        <ul>
+                                            <li><span>Address:</span>${hotel.address}</li>
+                                            <li><span>Rooms:</span>${hotel.getNumber_room()}</li>
+                                            <li><span>Services:</span>Wifi, Television, Bathroom,...</li>
+                                            <li><span>View:</span>Sea View</li>
+                                        </ul>
+                                        <a href="DetailHotel?hotelId=${hotel.getHotelID()}">View Details</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 p-0 col-md-5">
+                                    <div class="room__pic__slider owl-carousel">
+                                        <div class="room__pic__item set-bg" data-setbg="${hotel.image}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
+                    </c:forEach>
 
 
-        <!-- Hero Section Begin -->
-        <section class="hero spad set-bg" data-setbg="img/hero.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="breadcrumb__text mb-3">
-                            <h1>Our Room</h1>
-                            <div class="breadcrumb__links">
-                                <a href="./index.html">Home</a>
-                                <span>Rooms</span>
-                            </div>
-                        </div>
-                        <form action="#" class="filter__form">
-                            <div class="filter__form__item filter__form__item--search">
-                                <p>Location</p>
-                                <div class="filter__form__input">
-                                    <input type="text" placeholder="Search Location">
-                                    <span class="icon_search"></span>
-                                </div>
-                            </div>
-                            <div class="filter__form__item">
-                                <p>Check In</p>
-                                <div class="filter__form__datepicker">
-                                    <span class="icon_calendar"></span>
-                                    <input type="text" class="datepicker_pop check__in">
-                                    <i class="arrow_carrot-down"></i>
-                                </div>
-                            </div>
-                            <div class="filter__form__item">
-                                <p>Check Out</p>
-                                <div class="filter__form__datepicker">
-                                    <span class="icon_calendar"></span>
-                                    <input type="text" class="datepicker_pop check__out">
-                                    <i class="arrow_carrot-down"></i>
-                                </div>
-                            </div>
-                            <div class="filter__form__item filter__form__item--select">
-                                <p>Person</p>
-                                <div class="filter__form__select">
-                                    <span class="icon_group"></span>
-                                    <select>
-                                        <option value="">1 </option>
-                                        <option value="">2 </option>
-                                        <option value="">3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit">BOOK NOW</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Hero Section End -->
-
-        <!-- Rooms Section Begin -->
-        <section class="rooms spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 p-0 order-lg-2 order-md-2 col-md-6">
-                        <div class="room__pic__slider owl-carousel">
-                            <div class="room__pic__item set-bg" data-setbg="img/rooms/room-1.jpg"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 p-0 order-lg-1 order-md-1 col-md-6">
-                        <div class="room__text">
-                            <h3>Premium King Room</h3>
-                            <h2><sup>$</sup>99<span>/day</span></h2>
-                            <ul>
-                                <li><span>Size:</span>30 ft</li>
-                                <li><span>Capacity:</span>Max persion 3</li>
-                                <li><span>Bed:</span>King Beds</li>
-                                <li><span>Services:</span>Wifi, Television, Bathroom,...</li>
-                                <li><span>View:</span>Sea View</li>
-                            </ul>
-                            <a href="#">View Details</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 p-0 order-lg-3 order-md-3 col-md-6">
-                        <div class="room__pic__slider owl-carousel">
-                            <div class="room__pic__item set-bg" data-setbg="img/rooms/room-2.jpg"></div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-6 p-0 order-lg-4 order-md-4 col-md-6">
-                        <div class="room__text right__text">
-                            <h3>Deluxe Room</h3>
-                            <h2><sup>$</sup>86<span>/day</span></h2>
-                            <ul>
-                                <li><span>Size:</span>30 ft</li>
-                                <li><span>Capacity:</span>Max persion 3</li>
-                                <li><span>Bed:</span>King Beds</li>
-                                <li><span>Services:</span>Wifi, Television, Bathroom,...</li>
-                                <li><span>View:</span>Sea View</li>
-                            </ul>
-                            <a href="#">View Details</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 p-0 order-lg-6 order-md-6 col-md-6">
-                        <div class="room__pic__slider owl-carousel">
-                            <div class="room__pic__item set-bg" data-setbg="img/rooms/room-3.jpg"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 p-0 order-lg-5 order-md-5 col-md-6">
-                        <div class="room__text">
-                            <h3>Double Room</h3>
-                            <h2><sup>$</sup>71<span>/day</span></h2>
-                            <ul>
-                                <li><span>Size:</span>30 ft</li>
-                                <li><span>Capacity:</span>Max persion 3</li>
-                                <li><span>Bed:</span>King Beds</li>
-                                <li><span>Services:</span>Wifi, Television, Bathroom,...</li>
-                                <li><span>View:</span>Sea View</li>
-                            </ul>
-                            <a href="#">View Details</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 p-0 order-lg-7 order-md-7 col-md-6">
-                        <div class="room__pic__slider owl-carousel">
-                            <div class="room__pic__item set-bg" data-setbg="img/rooms/room-4.jpg"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 p-0 order-lg-8 order-md-8 col-md-6">
-                        <div class="room__text right__text">
-                            <h3>Luxury Room</h3>
-                            <h2><sup>$</sup>79<span>/day</span></h2>
-                            <ul>
-                                <li><span>Size:</span>30 ft</li>
-                                <li><span>Capacity:</span>Max persion 3</li>
-                                <li><span>Bed:</span>King Beds</li>
-                                <li><span>Services:</span>Wifi, Television, Bathroom,...</li>
-                                <li><span>View:</span>Sea View</li>
-                            </ul>
-                            <a href="#">View Details</a>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="pagination__number">
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">Next <span class="arrow_right"></span></a>
+                            <!--nếu page mà ít hơn 1 sẽ ko có pagination-->
+                            <c:if test="${page > 1}">
+
+                                <!--sẽ truyền các giá trị loc, rooms và page -->
+                                <c:if test="${curPage > 1}">
+                                    <a href="HotelRoom?page=${curPage - 1}&location=${location}&rooms=${rooms}">Previous <span class="arrow_left"></span></a>
+                                    </c:if>
+
+
+                                <c:forEach var="i" begin="1" end="${page}">
+                                    <a href="HotelRoom?page=${i}&location=${location}&rooms=${rooms}">${i}</a>
+                                </c:forEach>
+
+                                <c:if test="${curPage < page}">
+                                    <a href="HotelRoom?page=${curPage + 1}&location=${location}&rooms=${rooms}">Next <span class="arrow_right"></span></a>
+                                    </c:if>
+
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -361,8 +315,10 @@
             </div>
         </footer>
         <!-- Footer Section End -->
-
+        <jsp:include page="Modal.jsp"></jsp:include>
         <!-- Js Plugins -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.nice-select.min.js"></script>

@@ -15,19 +15,20 @@ public class OrderDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
+    //Lưu Order vào db - id tự tăng
     public boolean saveOrder(Order o) {
-        String query = "insert into Order values(?,?,?,?,?,?,?,?)";
+        String query = "insert into  [dbo].[Order] values(?,?,?,?,?,?,?,?)";
         try {
             conn = new ConnectSQL().makeConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, o.getOrderId());
-            ps.setInt(2, o.getAccountId());
-            ps.setInt(3, o.getHotelId());
-            ps.setString(4, o.getAddress());
-            ps.setString(5, o.getCheck_in());
-            ps.setString(6, o.getCheck_out());
-            ps.setInt(7, o.getGuests());
-            ps.setInt(8, o.getRooms());
+            ps.setInt(1, o.getAccountId());
+            ps.setInt(2, o.getHotelId());
+            ps.setString(3, o.getAddress());
+            ps.setString(4, o.getCheck_in());
+            ps.setString(5, o.getCheck_out());
+            ps.setInt(6, o.getGuests());
+            ps.setInt(7, o.getRooms());
+            ps.setDouble(8, o.getPrice());
 
             ps.executeUpdate();
 
@@ -38,23 +39,25 @@ public class OrderDAO {
         }
     }
 
+    //Xem toàn bộ Order
     public List<Order> viewAllOrder() {
         List<Order> orders = new ArrayList<Order>();
-        String query = "select * from Order";
+        String query = "select * from  [dbo].[Order]";
         try {
             conn = new ConnectSQL().makeConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
                 orders.add(new Order(
-                        rs.getString(1),
+                        rs.getInt(1),
                         rs.getInt(2),
                         rs.getInt(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
                         rs.getInt(7),
-                        rs.getInt(8)
+                        rs.getInt(8),
+                        rs.getDouble(9)
                 ));
             }
         } catch (Exception e) {
@@ -65,9 +68,10 @@ public class OrderDAO {
         return orders;
     }
 
+    //Xem danh sách của order của customer
     public List<Order> viewOrderByAccID(int id) {
         List<Order> orders = new ArrayList<Order>();
-        String query = "select * from Order where accountID = ?";
+        String query = "select * from  [dbo].[Order] where accountID = ?";
         try {
             conn = new ConnectSQL().makeConnection();
             ps = conn.prepareStatement(query);
@@ -75,14 +79,15 @@ public class OrderDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 orders.add(new Order(
-                        rs.getString(1),
+                        rs.getInt(1),
                         rs.getInt(2),
                         rs.getInt(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
                         rs.getInt(7),
-                        rs.getInt(8)
+                        rs.getInt(8),
+                        rs.getDouble(9)
                 ));
             }
         } catch (Exception e) {
@@ -93,16 +98,46 @@ public class OrderDAO {
         return orders;
     }
 
-    public boolean deleteOrder(String id) {
-        String query = "delete from Order where orderId = ?";
+    //xem thông tin của order dựa vào id
+    public Order viewOrderByOrderID(int id) {
+        String query = "select * from  [dbo].[Order] where orderId = ?";
         try {
             conn = new ConnectSQL().makeConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, id);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return (new Order(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getInt(8),
+                        rs.getDouble(9)
+                ));
+            }
+        } catch (Exception e) {
+            System.out.println("Error in display by accId: " + e.getMessage());
+            return null;
+        }
+        return null;
+    }
+    
+    
+    //Hủy order
+    public boolean deleteOrder(int id) {
+        String query = "delete from [dbo].[Order] where orderId = ?";
+        try {
+            conn = new ConnectSQL().makeConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
-            System.out.println("Error in delete order: "  + e.getMessage());
+            System.out.println("Error in delete order: " + e.getMessage());
             return false;
         }
     }

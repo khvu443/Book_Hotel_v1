@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">-->
     </head>
 
     <body>
@@ -29,42 +31,12 @@
         </div>
 
         <!-- Offcanvas Menu Begin -->
-        <jsp:include page="homepageHeader.jsp"></jsp:include>
+        <jsp:include page="header_mobile_view.jsp"></jsp:include>
             <!-- Offcanvas Menu End -->
 
             <!-- Header Section Begin -->
             <header class="header">
-                <div class="header__top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-7">
-                                <ul class="header__top__widget">
-                                    <li><span class="icon_pin_alt"></span> 96 Ernser Vista Suite 437, NY, US</li>
-                                    <li><span class="icon_phone"></span> (123) 456-78-910</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="header__top__right">
-                                    <div class="header__top__auth">
-                                        <ul>
-                                            <li><a href="#">Login</a></li>
-                                            <li><a href="#">Register</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="header__top__language">
-                                        <img src="img/lan.png" alt="">
-                                        <span>English</span>
-                                        <i class="fa fa-angle-down"></i>
-                                        <ul>
-                                            <li>English</li>
-                                            <li>Bangla</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <jsp:include page="header.jsp"></jsp:include>
                 <div class="header__nav__option">
                     <div class="container">
                         <div class="row">
@@ -77,15 +49,15 @@
                                 <div class="header__nav">
                                     <nav class="header__menu">
                                         <ul class="menu__class">
-                                            <li class="active"><a href="./index.html">Home</a></li>
-                                            <li><a href="hotels.jsp">Rooms</a></li>
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">News</a></li>
-                                            <li><a href="#">Contact</a></li>
+                                            <li class="active nav-link"><a href="HomePage">Home</a></li>
+                                            <li><a href="hotels.jsp" class="nav-link">Rooms</a></li>
+                                            <li><a href="#" class="nav-link">About Us</a></li>
+                                            <li><a href="#" class="nav-link">News</a></li>
+                                            <li><a href="#" class="nav-link">Contact</a></li>
                                         </ul>
                                     </nav>
                                     <div class="header__nav__widget">
-                                        <a href="hotels.jsp">Book Now <span class="arrow_right"></span></a>
+                                        <a href="hotels.jsp" class="nav-link">Book Now <span class="arrow_right"></span></a>
                                     </div>
                                 </div>
                             </div>
@@ -111,38 +83,39 @@
                                 <div class="filter__form__item filter__form__item--search">
                                     <p>Location</p>
                                     <div class="filter__form__input">
-                                        <input type="text" placeholder="Search Location">
+                                        <input name="location" type="text" placeholder="Search Location" required>
                                         <span class="icon_search"></span>
                                     </div>
                                 </div>
-                                <div class="filter__form__item">
-                                    <p>Check In</p>
-                                    <div class="filter__form__datepicker">
-                                        <span class="icon_calendar"></span>
-                                        <input type="text" class="datepicker_pop check__in">
-                                        <i class="arrow_carrot-down"></i>
+
+                                <div class="filter__form__item filter__form__item--search">
+                                    <p>Rooms</p>
+                                    <div class="filter__form__input">
+                                        <span><i class="fa-duotone fa-bed-front"></i></span>
+                                        <input name="rooms" type="number" placeholder="Number of rooms" min="1" value="1" required>
                                     </div>
                                 </div>
-                                <div class="filter__form__item">
-                                    <p>Check Out</p>
-                                    <div class="filter__form__datepicker">
-                                        <span class="icon_calendar"></span>
-                                        <input type="text" class="datepicker_pop check__out">
-                                        <i class="arrow_carrot-down"></i>
-                                    </div>
-                                </div>
+
+
                                 <div class="filter__form__item filter__form__item--select">
-                                    <p>Person</p>
+                                    <p>People(s)</p>
                                     <div class="filter__form__select">
                                         <span class="icon_group"></span>
-                                        <select>
-                                            <option value="">2 Adult, 1 Children</option>
-                                            <option value="">2 Adult</option>
-                                            <option value="">1 Adult</option>
+                                        <select name="peoples">
+                                            <option value="1">1 People</option>
+                                            <option value="2">2 Peoples</option>
+                                            <option value="3">3 Peoples</option>
+                                            <option value="4">4 Peoples</option>
+                                            <option value="5">5 Peoples</option>
+                                            <option value="6">6 Peoples</option>
+                                            <option value="7">7 Peoples</option>
+                                            <option value="8">8 Peoples</option>
+                                            <option value="9">9 Peoples</option>
+                                            <option value="10">10 Peoples</option>
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit">BOOK NOW</button>
+                                <button type="submit">CHECK AVAILABLE</button>
                             </form>
                         </div>
                     </div>
@@ -255,7 +228,7 @@
                                     <h4>${hotel.name_hotel}</h4>
                                     <h2><sup>$</sup>${hotel.getAmount()}<span>/day</span></h2>
                                 </div>
-                                <a href="${hotel.getHotelID()}">Booking Now</a>
+                                <a href="DetailHotel?hotelId=${hotel.getHotelID()}">Booking Now</a>
                             </div>
                         </div>
                     </c:forEach>
@@ -645,7 +618,19 @@
         </footer>
         <!-- Footer Section End -->
 
+        <jsp:include page="Modal.jsp"></jsp:include>
+
+        <c:if test="${updateNotice != null}">
+            <script>
+                window.addEventListener("load", function () {
+                    alert("${updateNotice}");
+                })
+            </script>
+        </c:if>
+
         <!-- Js Plugins -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.nice-select.min.js"></script>
